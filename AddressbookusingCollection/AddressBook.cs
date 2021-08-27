@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -154,6 +153,22 @@ namespace AddressBookSystem
                 else
                 {
                     Console.WriteLine("No such City or State stored in your addressbook.\nAvailable city and states are ::\n Cites:: " + element.Value.City + "\nStates:: " + element.Value.State);
+                }
+            }
+        }
+        public void FindCityState()
+        {
+            Console.WriteLine("Enter First Name of a Person to View his City and State::");
+            string person = Console.ReadLine();
+            foreach (var element in DictName)
+            {
+                if (element.Value.FirstName.Equals(person))
+                {
+                    Console.WriteLine("\n" + person + " lives in :: '" + element.Value.City + "' City and '" + element.Value.State + "' State.\n");
+                }
+                else
+                {
+                    Console.WriteLine("No such Person found in Addressbook.\n\nAvailable person in your addressbook are :: " + element.Value.FirstName + "\n");
                 }
             }
         }
