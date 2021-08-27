@@ -6,24 +6,25 @@ namespace AddressBookSystem
 {
     class AddressBook
     {
-        private List<Contact> pcontacts { get; set; } = new List<Contact>();
+        private List<Contact> List { get; set; } = new List<Contact>();
         public void AddContact(Contact contact)
         {
-            pcontacts.Add(contact);
+            List.Add(contact);
         }
 
         public void DisplayAllContact()
         {
-            foreach (var contact in pcontacts)
+            foreach (var contact in List)
             {
-                Console.WriteLine("SAVED CONTACT IS :\n" + contact.FirstName + contact.LastName + "\nAddress: " + contact.Address + "\nCity: " + contact.City + "\nState: " + contact.State + "\nZip Code: " + contact.ZipCode + "\nPhone Number: " + contact.PhoneNumber + "\nEmail: " + contact.Email);
+                Console.WriteLine("\n CONTACT :\n" + contact.FirstName + " " + contact.LastName + "\nAddress: " + contact.Address + "\nCity: " + contact.City + "\nState: " + contact.State + "\nZip Code: " + contact.ZipCode + "\nPhone Number: " + contact.PhoneNumber + "\nEmail: " + contact.Email);
+
             }
         }
-        public void EditContact(string Name)
+        public void EditContact(string personName)
         {
-            foreach (var contact in pcontacts)
+            foreach (var contact in List)
             {
-                if (contact.FirstName == Name)
+                if (contact.FirstName == personName)
                 {
                     Console.WriteLine("Enter new First Name");
                     string newFirstName = Console.ReadLine();
@@ -49,7 +50,20 @@ namespace AddressBookSystem
                     Console.WriteLine("Enter new Email:");
                     string newEmail = Console.ReadLine();
                     contact.Email = newEmail;
-                    Console.WriteLine("--------------------------------------------");
+                    Console.WriteLine("---------------------------------\n!!Contact Edited!!");
+                }
+            }
+
+        }
+        public void DeleteContact(string name)
+        {
+            foreach (var contact in List)
+            {
+                if (contact.FirstName == name)
+                {
+                    List.Remove(contact);
+                    Console.WriteLine("---------------------------------\n!!Contact Removed!!");
+                    break;
                 }
             }
         }
